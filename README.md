@@ -1,4 +1,4 @@
-OU Library Queue
+DSPACE  Queue
 ====
 
-Example Cybercom task queue. Good starting repo for various asynchronous tasks. 
+Good starting repo for various asynchronous tasks. 
