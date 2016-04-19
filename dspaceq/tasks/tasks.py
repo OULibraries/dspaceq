@@ -26,7 +26,7 @@ def dspace_load(local_file_or_url,collection,operation="add",dspace_exec="/srv/s
             operation: 'add' or 'replace' 
     """
     if operation.lower() =="add" or operation.lower() =="replace":
-        call(["sudo","-u","tomcat",dspace_exec,"import","--{0}".format(operation),"--eperson=libir@ou.edu","--collection={0}".format(collection)])
+        call(["sudo","-u","tomcat",dspace_exec,"import","--{0}".format(operation),"--eperson=libir@ou.edu","--collection={0}".format(collection),"--source={0}".format(local_file_or_url),"--mapfile=/mnt/tmp/mapfile"])
         return "https://test.shareok.org/handle/{0}".format(collection)
     else:
         raise("operation argument must be add or replace")
