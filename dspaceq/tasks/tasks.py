@@ -16,3 +16,17 @@ def add(x, y):
     """
     result = x + y
     return result
+
+@task()
+def dspace_load(local_file_or_url,collection,operation="add",dspace_exec="/srv/shareok/dspace/bin/dspace"):
+    """
+        dspace_load arguments:
+            local_file_or_url: Local file location
+            collection: collection to insert or replace data elements
+            operation: 'add' or 'replace' 
+    """
+    if operation.lower() =="add" or operation.lower() =="replace":
+        call(["sudo","-u","tomcat",dspace_exec,"import","--{0}".format(operation),"--eperson=libir@ou.edu","--collection={0}".format(collection)])
+        return "https://test.shareok.org/handle/{0}".format(collection)
+    else:
+        raise("operation argument must be add or replace")
